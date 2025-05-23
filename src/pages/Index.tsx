@@ -5,6 +5,8 @@ import StoreDashboard from '@/components/StoreDashboard';
 import OwnDashboard from '@/components/OwnDashboard';
 import ProductDashboard from '@/components/ProductDashboard';
 import BottomNav from '@/components/BottomNav';
+import Header from '@/components/Header';
+import QuickActions from '@/components/QuickActions';
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('store');
@@ -22,15 +24,18 @@ const Index = () => {
   };
   
   return (
-    <div className="min-h-screen bg-app-bg">
-      {/* Status Bar */}
-      <div className="bg-white px-4 pt-4 pb-3">
-        <h1 className="text-xl font-bold">Store Operations</h1>
-      </div>
+    <div className="min-h-screen bg-app-bg pb-16">
+      {/* Header */}
+      <Header />
       
       {/* Dashboard Toggle */}
       <div className="px-4 py-3">
         <DashboardToggle activeTab={activeTab} setActiveTab={setActiveTab} />
+      </div>
+      
+      {/* Quick Actions */}
+      <div className="px-4 mb-6">
+        <QuickActions />
       </div>
       
       {/* Dashboard Content */}

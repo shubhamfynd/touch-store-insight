@@ -13,7 +13,7 @@ const DashboardToggle: React.FC<DashboardToggleProps> = ({ activeTab, setActiveT
       <button
         className={cn(
           "flex-1 py-2 text-sm font-medium rounded-md transition-colors",
-          activeTab === "store" ? "bg-app-blue text-white" : "text-gray-600"
+          activeTab === "store" ? "bg-indigo-600 text-white" : "text-gray-600"
         )}
         onClick={() => setActiveTab("store")}
       >
@@ -25,7 +25,7 @@ const DashboardToggle: React.FC<DashboardToggleProps> = ({ activeTab, setActiveT
       <button
         className={cn(
           "flex-1 py-2 text-sm font-medium rounded-md transition-colors",
-          activeTab === "own" ? "bg-app-blue text-white" : "text-gray-600"
+          activeTab === "own" ? "bg-indigo-600 text-white" : "text-gray-600"
         )}
         onClick={() => setActiveTab("own")}
       >
@@ -37,7 +37,7 @@ const DashboardToggle: React.FC<DashboardToggleProps> = ({ activeTab, setActiveT
       <button
         className={cn(
           "flex-1 py-2 text-sm font-medium rounded-md transition-colors",
-          activeTab === "product" ? "bg-app-blue text-white" : "text-gray-600"
+          activeTab === "product" ? "bg-indigo-600 text-white" : "text-gray-600"
         )}
         onClick={() => setActiveTab("product")}
       >
