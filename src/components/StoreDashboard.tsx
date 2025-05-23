@@ -49,9 +49,8 @@ const StoreDashboard: React.FC = () => {
         className="w-full"
         onValueChange={(value) => setActiveSection(value)}
       >
-        <TabsList className="grid grid-cols-2 mb-4">
+        <TabsList className="mb-4">
           <TabsTrigger value="kpis">Key Metrics</TabsTrigger>
-          <TabsTrigger value="dashboards">Dashboards</TabsTrigger>
         </TabsList>
         
         <TabsContent value="kpis" className="space-y-6">
@@ -303,65 +302,6 @@ const StoreDashboard: React.FC = () => {
               data={lossesData} 
               timeFrame="Weekly"
               onTimeFrameChange={() => {}}
-            />
-          </div>
-        </TabsContent>
-        
-        <TabsContent value="dashboards" className="space-y-6">
-          {/* Top selling products section */}
-          <div className="mb-6">
-            <ProductTable products={productData} />
-          </div>
-        
-          {/* Additional dashboard cards */}
-          <div className="grid grid-cols-1 gap-4">
-            {/* Offline Sale and Stock on Hand */}
-            <DashboardCard 
-              title="Offline Sales & Stock on Hand" 
-              description="Real-time offline sales data and current inventory levels"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>}
-            />
-            
-            {/* P&L Dashboard */}
-            <DashboardCard 
-              title="P&L Dashboard" 
-              description="Profit and loss statement with key financial metrics"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>}
-            />
-            
-            {/* Merchandise Fills Dashboard */}
-            <DashboardCard 
-              title="Merchandise Fills" 
-              description="Grade, brick & option wise merchandise fills tracking"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
-            />
-            
-            {/* NPS Score Dashboard */}
-            <DashboardCard 
-              title="NPS Score" 
-              description="Net Promoter Score and customer satisfaction metrics"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"/><path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"/></svg>}
-            />
-            
-            {/* Online Orders Fulfillment */}
-            <DashboardCard 
-              title="Online Orders Fulfillment" 
-              description="Track and manage online order processing and delivery"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M20.4 14.5 16 10 4 20"/></svg>}
-            />
-            
-            {/* Other Store KPI Dashboard */}
-            <DashboardCard 
-              title="Other Store KPIs" 
-              description="Additional performance indicators and metrics"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>}
-            />
-            
-            {/* OC Monitoring */}
-            <DashboardCard 
-              title="OC Monitoring" 
-              description="Operations center monitoring and real-time alerts"
-              icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-indigo-600"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>}
             />
           </div>
         </TabsContent>

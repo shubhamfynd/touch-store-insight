@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 const Header: React.FC = () => {
@@ -32,21 +31,6 @@ const Header: React.FC = () => {
             <span className="absolute top-0 right-0 bg-red-500 rounded-full w-4 h-4 text-xs flex items-center justify-center">3</span>
           </button>
         </div>
-      </div>
-      
-      {/* Search bar */}
-      <div className="mt-3 flex">
-        <div className="bg-[#1f2454] rounded-full flex items-center flex-1 px-3 py-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-search text-gray-400"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input 
-            type="text" 
-            placeholder="Search" 
-            className="bg-transparent border-none text-white ml-2 focus:outline-none flex-1"
-          />
-        </div>
-        <button className="ml-3 bg-[#1f2454] p-3 rounded-full" aria-label="Scan">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-barcode text-white"><path d="M3 5v14"/><path d="M8 5v14"/><path d="M12 5v14"/><path d="M17 5v14"/><path d="M21 5v14"/></svg>
-        </button>
       </div>
     </div>
   );
