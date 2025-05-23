@@ -1,9 +1,9 @@
-
 import React from 'react';
-import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from 'recharts';
+import { BarChart as RechartsBarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, Label } from 'recharts';
 
 interface DataPoint {
-  name: string;
+  name?: string;
+  date?: string;
   value: number;
 }
 
@@ -12,18 +12,22 @@ interface BarChartProps {
   title: string;
   timeFrame?: string;
   onTimeFrameChange?: (timeFrame: string) => void;
+  yAxisLabel?: string;
+  xAxisType?: 'date' | 'category';
 }
 
 const BarChart: React.FC<BarChartProps> = ({ 
   data, 
   title,
   timeFrame = 'Monthly',
-  onTimeFrameChange
+  onTimeFrameChange,
+  yAxisLabel = '',
+  xAxisType = 'category',
 }) => {
   const timeFrameOptions = ['Weekly', 'Monthly', 'Quarterly', 'Yearly'];
-  
+  const xKey = xAxisType === 'date' ? 'date' : 'name';
   return (
-    <div className="bg-white p-4 rounded-lg shadow-sm">
+    <div className="bg-white p-4 rounded-lg shadow-sm w-full max-w-full sm:max-w-md mx-auto">
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-medium text-gray-800">{title}</h3>
         <div className="relative">
@@ -43,10 +47,14 @@ const BarChart: React.FC<BarChartProps> = ({
       </div>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
-          <RechartsBarChart data={data} margin={{ top: 5, right: 5, bottom: 20, left: 0 }}>
+          <RechartsBarChart data={data} margin={{ top: 5, right: 5, bottom: 20, left: 40 }}>
             <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-            <XAxis dataKey="name" tickLine={false} axisLine={false} />
-            <YAxis hide={true} />
+            <XAxis dataKey={xKey} tickLine={false} axisLine={false} angle={-15} textAnchor="end" />
+            <YAxis tickLine={false} axisLine={false} >
+              {yAxisLabel && (
+                <Label angle={-90} position="insideLeft" style={{ textAnchor: 'middle' }}>{yAxisLabel}</Label>
+              )}
+            </YAxis>
             <Tooltip 
               cursor={{fill: 'rgba(0, 0, 0, 0.05)'}}
               contentStyle={{

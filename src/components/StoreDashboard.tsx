@@ -1,12 +1,6 @@
 import React, { useState } from 'react';
 import MetricCard from './MetricCard';
 import BarChart from './BarChart';
-import { 
-  Tabs, 
-  TabsContent, 
-  TabsList, 
-  TabsTrigger 
-} from "@/components/ui/tabs";
 import ProductTable from './ProductTable';
 
 const salesData = [
@@ -38,274 +32,260 @@ const productData = [
 
 const StoreDashboard: React.FC = () => {
   const [salesTimeFrame, setSalesTimeFrame] = useState('Weekly');
-  const [activeSection, setActiveSection] = useState('kpis');
-  
+
   return (
     <div className="space-y-6 pb-20">
       <h2 className="text-xl font-bold">Store Performance</h2>
-      
-      <Tabs 
-        defaultValue="kpis" 
-        className="w-full"
-        onValueChange={(value) => setActiveSection(value)}
-      >
-        <TabsList className="mb-4">
-          <TabsTrigger value="kpis">Key Metrics</TabsTrigger>
-        </TabsList>
-        
-        <TabsContent value="kpis" className="space-y-6">
-          {/* Assortment & Penetration */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Assortment & Penetration</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard 
-                title="SKU Count"
-                value="1,428"
-                trend={5}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Assortment Score"
-                value="87%"
-                color="success"
-                trend={2}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Market Penetration"
-                value="63%"
-                color="warning"
-                trend={-3}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Out of Stock"
-                value="4.2%"
-                color="danger"
-                trend={1.5}
-                trendLabel="vs target"
-              />
-            </div>
-          </div>
-          
-          {/* Sales KPI */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Sales KPI</h3>
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <MetricCard 
-                title="Total Sales"
-                value="$142,847"
-                trend={7.2}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Number of Bills"
-                value="3,428"
-                trend={4.1}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Avg. Bill Value"
-                value="$41.67"
-                trend={3.1}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Conversion Rate"
-                value="28.5%"
-                color="success"
-                trend={1.8}
-                trendLabel="vs target"
-              />
-            </div>
-            <BarChart 
-              title="Sales Trend" 
-              data={salesData} 
-              timeFrame={salesTimeFrame}
-              onTimeFrameChange={setSalesTimeFrame}
-            />
-          </div>
-          
-          {/* Bill Penetration */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Bill Penetration</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard 
-                title="Avg. Items Per Bill"
-                value="2.7"
-                trend={0.3}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Cross-sell Rate"
-                value="38%"
-                color="success"
-                trend={5}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Attachment Rate"
-                value="42%"
-                color="warning"
-                trend={-2}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Return Rate"
-                value="4.8%"
-                color="danger"
-                trend={0.3}
-                trendLabel="vs last period"
-              />
-            </div>
-          </div>
-          
-          {/* Merchandise Availability */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Merchandise Availability</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard 
-                title="In-Stock Rate"
-                value="96.4%"
-                color="success"
-                trend={0.8}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Display Compliance"
-                value="92%"
-                color="success"
-                trend={3}
-                trendLabel="vs last check"
-              />
-              <MetricCard 
-                title="Replenishment Rate"
-                value="84.2%"
-                color="warning"
-                trend={-3.5}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Backroom Stock"
-                value="$87,320"
-                trend={-12.4}
-                trendLabel="vs last month"
-              />
-            </div>
-          </div>
-          
-          {/* Gross Margin */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Gross Margin</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard 
-                title="Overall GM%"
-                value="36.4%"
-                color="success"
-                trend={1.2}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Apparel GM%"
-                value="48.3%"
-                color="success"
-                trend={2.1}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Accessories GM%"
-                value="42.7%"
-                color="success"
-                trend={0.6}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Footwear GM%"
-                value="31.8%"
-                color="warning"
-                trend={-1.4}
-                trendLabel="vs target"
-              />
-            </div>
-          </div>
-          
-          {/* Sell through and Week Cover */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Sell Through & Week Cover</h3>
-            <div className="grid grid-cols-2 gap-3">
-              <MetricCard 
-                title="Avg. Sell Through"
-                value="32%"
-                color="success"
-                trend={4.5}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Weeks of Supply"
-                value="8.2"
-                color="warning"
-                trend={0.8}
-                trendLabel="vs target (6)"
-              />
-              <MetricCard 
-                title="New Release ST%"
-                value="28%"
-                color="warning"
-                trend={-3.2}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Clearance ST%"
-                value="76%"
-                color="success"
-                trend={12.4}
-                trendLabel="vs target"
-              />
-            </div>
-          </div>
-          
-          {/* Losses & Markdown */}
-          <div>
-            <h3 className="text-sm text-gray-500 font-medium mb-3">Losses & Markdown</h3>
-            <div className="grid grid-cols-2 gap-3 mb-4">
-              <MetricCard 
-                title="Total Losses"
-                value="$8,742"
-                color="danger"
-                trend={2.4}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Markdown Value"
-                value="$12,385"
-                color="warning"
-                trend={-3.7}
-                trendLabel="vs last period"
-              />
-              <MetricCard 
-                title="Shrinkage"
-                value="1.2%"
-                color="success"
-                trend={-0.3}
-                trendLabel="vs target"
-              />
-              <MetricCard 
-                title="Expiry Loss"
-                value="$3,254"
-                color="danger"
-                trend={4.5}
-                trendLabel="vs last period"
-              />
-            </div>
-            <BarChart 
-              title="Losses Trend" 
-              data={lossesData} 
-              timeFrame="Weekly"
-              onTimeFrameChange={() => {}}
-            />
-          </div>
-        </TabsContent>
-      </Tabs>
+      {/* Assortment & Penetration */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Assortment & Penetration</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <MetricCard 
+            title="SKU Count"
+            value="1,428"
+            borderColor="blue"
+            trend={5}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Assortment Score"
+            value="87%"
+            borderColor="green"
+            trend={2}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Market Penetration"
+            value="63%"
+            borderColor="yellow"
+            trend={-3}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Out of Stock"
+            value="4.2%"
+            borderColor="red"
+            trend={1.5}
+            trendLabel="vs target"
+          />
+        </div>
+      </div>
+      {/* Sales KPI */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Sales KPI</h3>
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <MetricCard 
+            title="Total Sales"
+            value="$142,847"
+            borderColor="blue"
+            trend={7.2}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Number of Bills"
+            value="3,428"
+            borderColor="blue"
+            trend={4.1}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Avg. Bill Value"
+            value="$41.67"
+            borderColor="blue"
+            trend={3.1}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Conversion Rate"
+            value="28.5%"
+            borderColor="green"
+            trend={1.8}
+            trendLabel="vs target"
+          />
+        </div>
+        <BarChart 
+          title="Sales Trend" 
+          data={salesData} 
+          timeFrame={salesTimeFrame}
+          onTimeFrameChange={setSalesTimeFrame}
+        />
+      </div>
+      {/* Bill Penetration */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Bill Penetration</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <MetricCard 
+            title="Avg. Items Per Bill"
+            value="2.7"
+            borderColor="blue"
+            trend={0.3}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Cross-sell Rate"
+            value="38%"
+            borderColor="green"
+            trend={5}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Attachment Rate"
+            value="42%"
+            borderColor="yellow"
+            trend={-2}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Return Rate"
+            value="4.8%"
+            borderColor="red"
+            trend={0.3}
+            trendLabel="vs last period"
+          />
+        </div>
+      </div>
+      {/* Merchandise Availability */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Merchandise Availability</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <MetricCard 
+            title="In-Stock Rate"
+            value="96.4%"
+            borderColor="green"
+            trend={0.8}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Display Compliance"
+            value="92%"
+            borderColor="green"
+            trend={3}
+            trendLabel="vs last check"
+          />
+          <MetricCard 
+            title="Replenishment Rate"
+            value="84.2%"
+            borderColor="yellow"
+            trend={-3.5}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Backroom Stock"
+            value="$87,320"
+            borderColor="blue"
+            trend={-12.4}
+            trendLabel="vs last month"
+          />
+        </div>
+      </div>
+      {/* Gross Margin */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Gross Margin</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <MetricCard 
+            title="Overall GM%"
+            value="36.4%"
+            borderColor="green"
+            trend={1.2}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Apparel GM%"
+            value="48.3%"
+            borderColor="green"
+            trend={2.1}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Accessories GM%"
+            value="42.7%"
+            borderColor="green"
+            trend={0.6}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Footwear GM%"
+            value="31.8%"
+            borderColor="yellow"
+            trend={-1.4}
+            trendLabel="vs target"
+          />
+        </div>
+      </div>
+      {/* Sell through and Week Cover */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Sell Through & Week Cover</h3>
+        <div className="grid grid-cols-2 gap-3">
+          <MetricCard 
+            title="Avg. Sell Through"
+            value="32%"
+            borderColor="green"
+            trend={4.5}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Weeks of Supply"
+            value="8.2"
+            borderColor="yellow"
+            trend={0.8}
+            trendLabel="vs target (6)"
+          />
+          <MetricCard 
+            title="New Release ST%"
+            value="28%"
+            borderColor="yellow"
+            trend={-3.2}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Clearance ST%"
+            value="76%"
+            borderColor="green"
+            trend={12.4}
+            trendLabel="vs target"
+          />
+        </div>
+      </div>
+      {/* Losses & Markdown */}
+      <div>
+        <h3 className="text-sm text-gray-500 font-medium mb-3">Losses & Markdown</h3>
+        <div className="grid grid-cols-2 gap-3 mb-4">
+          <MetricCard 
+            title="Total Losses"
+            value="$8,742"
+            borderColor="red"
+            trend={2.4}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Markdown Value"
+            value="$12,385"
+            borderColor="yellow"
+            trend={-3.7}
+            trendLabel="vs last period"
+          />
+          <MetricCard 
+            title="Shrinkage"
+            value="1.2%"
+            borderColor="green"
+            trend={-0.3}
+            trendLabel="vs target"
+          />
+          <MetricCard 
+            title="Expiry Loss"
+            value="$3,254"
+            borderColor="red"
+            trend={4.5}
+            trendLabel="vs last period"
+          />
+        </div>
+        <BarChart 
+          title="Losses Trend" 
+          data={lossesData} 
+          timeFrame="Weekly"
+          onTimeFrameChange={() => {}}
+        />
+      </div>
     </div>
   );
 };

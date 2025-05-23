@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MetricCard from './MetricCard';
 import CategoryPerformance from './CategoryPerformance';
@@ -45,14 +44,14 @@ const ProductDashboard: React.FC = () => {
           <MetricCard 
             title="Avg. Product Rating"
             value="4.6/5"
-            color="success"
+            borderColor="green"
             trend={0.2}
             trendLabel="vs last period"
           />
           <MetricCard 
             title="Out of Stock"
             value="24"
-            color="warning"
+            borderColor="yellow"
             trend={-5}
             trendLabel="vs last period"
             icon={<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-alert-circle"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>}
@@ -73,14 +72,14 @@ const ProductDashboard: React.FC = () => {
           <MetricCard 
             title="Profit Margin"
             value="31.4%"
-            color="success"
+            borderColor="green"
             trend={1.2}
             trendLabel="vs target"
           />
           <MetricCard 
             title="Return Rate"
             value="3.8%"
-            color="success"
+            borderColor="green"
             trend={-0.5}
             trendLabel="vs last period"
           />

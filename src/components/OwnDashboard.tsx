@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MetricCard from './MetricCard';
 import BarChart from './BarChart';
@@ -27,26 +26,26 @@ const OwnDashboard: React.FC = () => {
           <MetricCard 
             title="Overall Score"
             value="93%"
-            color="success"
+            borderColor="green"
             trend={2}
             trendLabel="vs last period"
           />
           <MetricCard 
             title="Attendance"
             value="100%"
-            color="success"
+            borderColor="green"
           />
           <MetricCard 
             title="Task Completion"
             value="97%"
-            color="success"
+            borderColor="green"
             trend={5}
             trendLabel="vs target"
           />
           <MetricCard 
             title="Customer Rating"
             value="4.8/5"
-            color="success"
+            borderColor="green"
             trend={0.2}
             trendLabel="vs last period"
           />
@@ -72,7 +71,7 @@ const OwnDashboard: React.FC = () => {
           <MetricCard 
             title="Sales Target"
             value="92%"
-            color="success"
+            borderColor="green"
             subtitle="$53,000 goal"
             trend={4}
             trendLabel="vs target"
@@ -92,6 +91,8 @@ const OwnDashboard: React.FC = () => {
         data={performanceData}
         timeFrame={timeFrame}
         onTimeFrameChange={setTimeFrame}
+        yAxisLabel="Amount in Rs."
+        xAxisType="date"
       />
       
       {/* Additional KPIs */}
@@ -101,7 +102,7 @@ const OwnDashboard: React.FC = () => {
           <MetricCard 
             title="Cross-selling"
             value="24%"
-            color="success"
+            borderColor="green"
             trend={1.8}
             trendLabel="vs target"
           />
@@ -114,12 +115,12 @@ const OwnDashboard: React.FC = () => {
           <MetricCard 
             title="Training Score"
             value="98%"
-            color="success"
+            borderColor="green"
           />
           <MetricCard 
             title="Inventory Accuracy"
             value="99.2%"
-            color="success"
+            borderColor="green"
             trend={0.5}
             trendLabel="vs last period"
           />
